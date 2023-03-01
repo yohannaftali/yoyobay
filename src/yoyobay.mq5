@@ -1,11 +1,11 @@
 //+------------------------------------------------------------------+
-//|                                                          YoYoBay |
-//|                                    Copyright 2022, Yohan Naftali |
-//|                                              https://yohanli.com |
+//|                                                       YoYoBayPro |
+//|                                       Copyright 2022, YoYoBayPro |
+//|                                                http://yoyobay.io |
 //+------------------------------------------------------------------+
-#property copyright "Copyright 2022, YoYoBay"
-#property link      "https://yohanli.com"
-#property version   "221.207"
+#property copyright "Copyright 2022, YoYoBay Pro"
+#property link      "https://yoyobay.io"
+#property version   "230.117"
 
 #include "Engine.mqh"
 
@@ -21,20 +21,20 @@ enum ENUM_STRATEGY {
 
 //--- input parameters
 input group "Trading Window";
-input string _Begin_Order                = "00:00";  // Start Order Time (hh:mm) (Server Time)
-input string _End_Order                  = "23:59";  // End Order Time (hh:mm) (Server Time)
+input string _Begin_Order                = "03:50";  // Start Order Time (hh:mm) (Server Time)
+input string _End_Order                  = "14:30";  // End Order Time (hh:mm) (Server Time)
 
 input group "Risk Management";
-input double _Risk                       = 5;        // Risk (%)
+input double _Risk                       = 1;        // Risk (%)
 input double _Risk_Reward                = 10;       // Risk/Reward Ratio
-input double _Stop_Loss_Pip              = 4;        // Stop Loss (pip)
-input double _Trailing_Stop_Pip          = 4;        // Trailing Stop (pip)
-input bool _Hide_Stop_Loss               = true;     // Hide Stop Loss
-input double _Stop_Loss_Safety_Pip       = 4;        // Safety Stop Loss (pip)
-input double _Safety_Spread_Multiplier   = 5;        // Maximum Spread Multiplier (Spread.x < Stop Loss)
+input double _Stop_Loss_Pip              = 5.0;      // Stop Loss (pip)
+input double _Trailing_Stop_Pip          = 1;        // Trailing Stop (pip)
+input bool _Hide_Stop_Loss               = false;    // Hide Stop Loss
+input double _Stop_Loss_Safety_Pip       = 5.0;      // Safety Stop Loss (pip)
+input double _Safety_Spread_Multiplier   = 3;        // Maximum Spread Multiplier (Spread.x < Stop Loss)
 
 input group "S/R";
-input ENUM_STRATEGY _Strategy            = Breakout; // Direction Strategy
+input ENUM_STRATEGY _Strategy            = Reversal; // Direction Strategy
 input ENUM_SR_INDICATOR _SR_Indicator    = Fractals; // S/R Indicator
 input bool _Use_Finihed_SR               = false;    // Use Last Finished S/R
 input double _Offset_Pip                 = 0;        // Offset First Opened Order From S/R (pip)
@@ -66,9 +66,9 @@ input string _Signature                  = "Powered by YoYoBay"; // Signature
 input ulong _Expert_MagicNumber          = 1;                    // EA's MagicNumber
 
 input group "Telegram";
-input string _Telegram_Token             = "PUT_YOUR_TELEGRAM_TOKEN_HERE"; // Telegram Bot Token
-input long _Telegram_Channel_Trader      = -1000000000000;                 // Telegram Channel ID for Trader (starts with -)
-input string _Telegram_Channel_Investor  = "Channel Name For Investor";    // Telegram Channel Name for Investor
+input string _Telegram_Token             = "YOUR:TELEGRAM_BOT_TOKEN"; // Telegram Bot Token
+input long _Telegram_Channel_Trader      = -1000000000000;            // Telegram Channel ID for Trader (starts with -)
+input string _Telegram_Channel_Investor  = "";                        // Telegram Channel Name for Investor
 
 Engine e;
 int OnInit() {

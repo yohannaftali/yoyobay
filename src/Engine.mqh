@@ -5,7 +5,7 @@
 //+------------------------------------------------------------------+
 #property copyright "Copyright 2022, Yohan Naftali"
 #property link      "https://yohanli.com"
-#property version   "220.914"
+#property version   "230.117"
 
 #include "Message.mqh"
 
@@ -452,7 +452,7 @@ void Engine::onTrade() {
                                 string realSl = DoubleToString(hitRealSlPrice, _Digits);
                                 double profitDouble = HistoryDealGetDouble(ticket, DEAL_PROFIT);
                                 string profit = DoubleToString(profitDouble, 2);
-                                string commision = DoubleToString(HistoryDealGetDouble(ticket, DEAL_COMMISSION), 2);
+                                string commision = DoubleToString(HistoryDealGetDouble(ticket, DEAL_COMMISSION)*2.0, 2);
                                 string fee = DoubleToString(HistoryDealGetDouble(ticket, DEAL_FEE), 2);
                                 string swap = DoubleToString(HistoryDealGetDouble(ticket, DEAL_SWAP), 2);
                                 string ask = DoubleToString(SymbolInfoDouble(_Symbol, SYMBOL_ASK), _Digits);
